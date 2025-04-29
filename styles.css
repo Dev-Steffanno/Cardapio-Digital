@@ -1,0 +1,118 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+margin: 0;
+padding: 0;
+background: #f8f8f8;
+}
+
+header {
+background: #ff6600;
+color: #f8f8f8;
+padding: 1rem;
+text-align: center;
+
+}
+
+#menu {
+display: grid;
+grid-template-columns: repeat(auto-fit, mimax(200px,1fr));
+gap: 1rem;
+padding: 2rem;
+
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+  overflow: hidden;
+  transition: 0.3s;
+
+}
+
+.card:hover {
+  transform: scale(1.05);
+
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+
+}
+
+.card-content h3 {
+  margin:  0 0 0.5rem;
+
+}
+
+.card-content p {
+  margin: 0;
+  color: #555;
+
+
+}
+
+.btn-pedir {
+margin-top: o.5rem;
+padding: 0.5rem 1rem;
+background-color: #ff6600;
+border: none;
+border-radius: 4px;
+color: white;
+font-size: 1rem;
+cursor: pointer;
+transition: background-color 0.3s;
+
+}
+
+.btn-pedir:hover {
+background-color: #e65c00;
+
+}
+
+.mensagem {
+display: none;
+background-color: #dff0d8;
+color: #3c763d;
+padding: 1rem;
+margin: 1rem;
+border: 1px solid #d6e9c6;
+border-radius: 8px;
+text-align: center;
+font-weight: bold;
+animation: aparecer 0.5s ease-in-out;
+
+}
+
+@keyframes aparecer {
+from {opacity: 0; transform: translateY(-10px);}
+to {opacity: 1; transform: translateY(0);}
+
+}
+
+#pedidos {
+  margin: 2rem;
+padding: 1rem;
+background-color: #f8f8f8;
+border-radius: 8px;
+box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+
+}
+
+#pedidos h2 {
+margin-bottom: 0.5rem;
+
+}
+
+#lista-pedidos li {
+margin-bottom: 0.5rem;
+font-weight: bold;
+color: #333 ;
+
+}
