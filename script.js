@@ -1,7 +1,7 @@
 const menu = [
   {
     nome: "Hamburguer",
-    descricao: "Pão, Carne, Queijo oe Salada",
+    descricao: "Pão, Carne, Queijo e Salada",
     imagem:"armando-ascorve-morales-ypZI_CA91M0-unsplash.jpg",
   },
 
