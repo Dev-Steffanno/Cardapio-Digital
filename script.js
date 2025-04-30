@@ -8,32 +8,49 @@ const menu = [
   {
     nome: "Pizza",
     descricao: "Mussarela, Tomate e Manjericão",
-    imagem:
-      "ivan-torres-MQUqbmszGGM-unsplash.jpg",
+    imagem: "ivan-torres-MQUqbmszGGM-unsplash.jpg",
   },
 
   {
     nome: "Suco Natural",
     descricao: "Suco de Frutas Frescas",
-    imagem:
-      "kobby-mendez-xBFTjrMIC0c-unsplash.jpg",
+    imagem:"kobby-mendez-xBFTjrMIC0c-unsplash.jpg",
   },
 ];
 
 const pedidosFeitos = {};
 const listaPedidos = document.getElementById('lista-pedidos');
+const menuContainer = document.getElementById("menu");
+const btnLimpar = document.getElementById('btn-limpar');
+const mensagem = document.getElementById ('mensagem-pedido')
+
+
 
 function atualizarListaPedidos () {
   listaPedidos.innerHTML = "";
 
+
   for (let nome in pedidosFeitos) {
     const li = document.createElement("li");
-    li.innerText = `${nome} x${pedidosFeitos[nome]}`;
-    listaPedidos.appendChild(li);
-  }
-}
+    
+    li.innerHTML = `
+    ${nome} x${pedidosFeitos[nome]}
+    <button class = "btn-retirar"> ❌ </button>
+    `;
 
-const menuContainer = document.getElementById("menu");
+    const btnRetirar = li.querySelector(".btn-retirar");
+    btnRetirar.addEventListener ("click", () => {
+      if (pedidosFeitos[nome] > 1) {
+        pedidosFeitos [nome] -= 1;
+      } else {
+        delete pedidosFeitos[nome];
+      }
+      atualizarListaPedidos();
+    });
+
+    listaPedidos.appendChild(li);
+}
+}
 
 menu.forEach((item) => {
   const card = document.createElement("div");
@@ -47,13 +64,9 @@ menu.forEach((item) => {
       <button class="btn-pedir">Pedir</button>
     </div>
     `;
-    
-  menuContainer.appendChild(card);
 
-  const btnPedir = card.querySelector(".btn-pedir");
+    const btnPedir = card.querySelector(".btn-pedir");
   btnPedir.addEventListener("click", () => {
-
-    const mensagem = document.getElementById('mensagem-pedido');
 
     mensagem.innerText = `Você pediu um ${item.nome}!🍽️`;
     mensagem.style.display = 'block'
@@ -69,7 +82,17 @@ menu.forEach((item) => {
     }
 
 atualizarListaPedidos()
-
   });
+
+  menuContainer.appendChild(card);
 });
 
+    btnLimpar.addEventListener('click', () => {
+      const confirmar = confirm("Tem certeza que deseja limpar todos os pedidos?");
+      if (confirmar){
+        for (let nome in pedidosFeitos) {
+          delete pedidosFeitos[nome];
+        }
+        atualizarListaPedidos ();
+        }
+      });
